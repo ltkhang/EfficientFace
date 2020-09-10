@@ -84,7 +84,8 @@ if __name__ == '__main__':
         img = cv2.cvtColor(origin_img, cv2.COLOR_BGR2RGB)
         img = np.array(img, dtype=np.float32)
         # img = np.array(img, dtype=np.uint8)
-        interpreter.set_tensor(input_details[0]['index'], [img])
+        input_data = np.expand_dims(np.asarray(img), axis=0)
+        interpreter.set_tensor(input_details[0]['index'], input_data)
 
         interpreter.invoke()
         f = np.squeeze(interpreter.get_tensor(output_details[0]['index']))

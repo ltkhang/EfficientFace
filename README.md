@@ -12,6 +12,12 @@ change the line 408 in mxnet_parser.py to:
 weight = self.weight_data.get("fc1_weight").asnumpy()
 ```
 
+or 
+
+```
+weight = self.weight_data.get("fc1_weight").asnumpy().transpose((1, 0))
+```
+
 aligned_faces directory from CASIA_FACE_V5
 
 https://github.com/ltkhang/CASIA_FACE_V5_verification
